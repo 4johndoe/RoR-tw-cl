@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  db:
+    image: postgres:12-alpine
+    environment:
+      POSTGRES_USER: twitter_clone
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: twitter_clone_development
+    volumes:
+      - twitter-pg:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8091:8080
+  
+volumes:
+  twitter-pg:
